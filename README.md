@@ -1,33 +1,24 @@
-About <pkg_name>-feedstock
-=======================
+# About chaco-feedstock
 
 Feedstock license: [BSD-3-Clause](LICENSE)
 
-Home: <home_url>
+- Home: [https://docs.enthought.com/chaco/](https://docs.enthought.com/chaco)
+- Package license: [https://github.com/enthought/chaco?tab=License-1-ov-file](https://github.com/enthought/chaco?tab=License-1-ov-file)
+- Summary: Chaco is a Python plotting application toolkit that facilitates writing plotting applications at all levels
+  of complexity, from simple scripts with hard-coded data to large plotting programs with complex data
+  interrelationships and a multitude of interactive tools. While Chaco generates attractive static plots for publication
+  and presentation, it also works well for interactive data visualization and exploration.
 
-Package license: <pkg_license>
+# Installing chaco
 
-Summary: <pkg_summary>
-
-
-Current release info
-====================
-
-| Name | Downloads | Version | Platforms |
-| --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-<pkg_name>-green.svg)](https://anaconda.org/anaconda/<pkg_name>) | [![Conda Downloads](https://img.shields.io/conda/dn/anaconda/<pkg_name>.svg)](https://anaconda.org/anaconda/<pkg_name>) | [![Conda Version](https://img.shields.io/conda/vn/anaconda/<pkg_name>.svg)](https://anaconda.org/anaconda/<pkg_name>) | [![Conda Platforms](https://img.shields.io/conda/pn/anaconda/<pkg_name>.svg)](https://anaconda.org/anaconda/<pkg_name>) |
-
-Installing <pkg_name>
-==================
-
-Installing `<pkg_name>` from the main channel can be achieved by:
+Installing `chaco` from the services channel can be achieved by:
 
 ```
-conda install <pkg_name>
+conda install services::chaco
 ```
 
-It is possible to list all of the versions of `<pkg_name>` available on your platform with `conda`:
+It is possible to list all of the versions of `chaco` available on your platform with `conda`:
 
 ```
-conda search <pkg_name>
+conda search --channel services chaco
 ```
