@@ -29,12 +29,12 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - cython
+        - python >=3.10
         - python-build
         - setuptools
         - swig
         - wheel
         - numpy >=2                          # [build_platform != target_platform]
-        - python >=3.10                      # [build_platform != target_platform]
         - cross-python_{{ target_platform }} # [build_platform != target_platform]
       host:
         - python >=3.10
