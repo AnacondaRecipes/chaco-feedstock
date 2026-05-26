@@ -27,6 +27,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cython
+    - python-build
     - setuptools
     - swig
     - wheel
@@ -37,18 +38,16 @@ requirements:
     - python >=3.10
     - numpy >=2
     - pip
-    # requirements for enable
+    # requirements for `enable`
     - cython
     - fonttools
     - pyparsing
     - pyside6
-    - python-build
-    - setuptools
     - swig
   run:
     - python >=3.10
     - {{ pin_compatible('numpy') }}
-    # requirements for enable
+    # requirements for `enable`
     - fonttools
     - kiwisolver
     - pillow
@@ -62,7 +61,7 @@ requirements:
     imports:
       - chaco
     commands:
-      - python -c "import chaco; print(chaco.__version__)"
+      - "{{ PYTHON }} -c 'import chaco; print(chaco.__version__)'"
 
 about:
   home: https://github.com/enthought/chaco

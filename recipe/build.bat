@@ -12,7 +12,7 @@ if errorlevel 1 exit /b 1
 
 :: * --no-build-isolation tells `pip` to trust the `conda` environment's tools
 :: * [layout,svg] extras are required for chaco
-"%PYTHON%" -m pip install ".[layout,svg]" --no-build-isolation --no-deps --ignore-installed -v --prefix="${PREFIX}"
+"%PYTHON%" -m pip install ".[layout,svg]" --no-build-isolation --no-deps --ignore-installed -v --prefix="%PREFIX%"
 if errorlevel 1 exit /b 1
 
 :: verify `enable` installed correctly
