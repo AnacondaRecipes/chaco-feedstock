@@ -23,8 +23,6 @@ outputs:
     version: {{ version }}
     build:
         number: 0
-        script: build.sh  # [unix]
-        script: bld.bat   # [win]
         skip: true  # [py<310]
     requirements:
       build:
