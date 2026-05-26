@@ -59,10 +59,12 @@ outputs:
         - traits
         - traitsui
     test:
+      requires:
+        - pip
       imports:
         - chaco
       commands:
-        - "{{ PYTHON }} -c 'import chaco; print(chaco.__version__)'"
+        - pip check
 
 about:
   home: https://github.com/enthought/chaco
