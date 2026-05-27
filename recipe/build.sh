@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Export SDK path for pip subprocesses (macOS)
+if [[ -n "${CONDA_BUILD_SYSROOT:-}" ]]; then
+    export SDKROOT="${CONDA_BUILD_SYSROOT}"
+fi
+
 # `enable`
 cd $SRC_DIR/enable
 

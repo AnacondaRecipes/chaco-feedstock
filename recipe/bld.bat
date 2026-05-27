@@ -4,7 +4,7 @@
 :: set local variables in a new scope & ensure `cmd.exe` expands variable names at execution time
 setlocal enabledelayedexpansion
 
-:: Activate Visual Studio build tools
+:: Activate Visual Studio compiler environment for pip subprocesses
 for %%f in ("%BUILD_PREFIX%\etc\conda\activate.d\vs*_compiler_vars.bat") do call "%%f"
 
 :: `enable`
