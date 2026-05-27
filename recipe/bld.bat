@@ -1,11 +1,14 @@
 :: disable `cmd.exe` from printing each command to the terminal before executing it
 @echo off
 
+:: Activate Visual Studio compiler environment for pip subprocesses
+:: Must be done before setlocal to allow env vars to propagate
+if exist "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat" (
+    call "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat"
+)
+
 :: set local variables in a new scope & ensure `cmd.exe` expands variable names at execution time
 setlocal enabledelayedexpansion
-
-:: Activate Visual Studio compiler environment for pip subprocesses
-for %%f in ("%BUILD_PREFIX%\etc\conda\activate.d\vs*_compiler_vars.bat") do call "%%f"
 
 :: `enable`
 cd "%SRC_DIR%\enable"
