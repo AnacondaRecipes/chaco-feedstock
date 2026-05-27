@@ -1,11 +1,6 @@
 :: disable `cmd.exe` from printing each command to the terminal before executing it
 @echo off
 
-:: Activate Visual Studio compiler environment for pip subprocesses
-if exist "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat" (
-    call "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat"
-)
-
 :: set local variables in a new scope & ensure `cmd.exe` expands variable names at execution time
 setlocal enabledelayedexpansion
 
