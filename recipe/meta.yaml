@@ -19,52 +19,58 @@ source:
     folder: chaco
 
 build:
-  number: 0
   skip: true  # [py<310]
 
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ stdlib('c') }}  # [unix]
-    - cython
-    - python >=3.10
-    - python-build
-    - setuptools
-    - swig
-    - wheel
-    - numpy >=2                          # [build_platform != target_platform]
-    - cross-python_{{ target_platform }} # [build_platform != target_platform]
-  host:
-    - python >=3.10
-    - numpy >=2
-    - pip
-    # requirements for `enable`
-    - cython
-    - fonttools
-    - pyparsing
-    - pyside6
-    - setuptools
-    - swig
-    - wheel
-  run:
-    - python >=3.10
-    # requirements for `enable`
-    - fonttools
-    - kiwisolver
-    - pillow
-    - pyface
-    - pyparsing
-    - pyside6
-    - traits
-    - traitsui
-test:
-  requires:
-    - pip
-  imports:
-    - chaco
-  commands:
-    - pip check
+outputs:
+  - name: {{ name }}
+    version: {{ version }}
+    script: build.sh   # [unix]
+    script: bld.bat    # [win]
+    build:
+      number: 0
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}  # [unix]
+        - cython
+        - python >=3.10
+        - python-build
+        - setuptools
+        - swig
+        - wheel
+        - numpy >=2                          # [build_platform != target_platform]
+        - cross-python_{{ target_platform }} # [build_platform != target_platform]
+      host:
+        - python >=3.10
+        - numpy >=2
+        - pip
+        # requirements for `enable`
+        - cython
+        - fonttools
+        - pyparsing
+        - pyside6
+        - setuptools
+        - swig
+        - wheel
+      run:
+        - python >=3.10
+        # requirements for `enable`
+        - fonttools
+        - kiwisolver
+        - pillow
+        - pyface
+        - pyparsing
+        - pyside6
+        - traits
+        - traitsui
+    test:
+      requires:
+        - pip
+      imports:
+        - chaco
+      commands:
+        - pip check
 
 about:
   home: https://github.com/enthought/chaco

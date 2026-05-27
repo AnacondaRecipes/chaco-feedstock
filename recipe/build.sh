@@ -10,7 +10,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
         export SDKROOT="$(xcrun --show-sdk-path)"
     fi
     export CFLAGS="${CFLAGS:-} -isysroot ${SDKROOT}"
-    export CXXFLAGS="${CXXFLAGS:-} -isysroot ${SDKROOT}"
+    export CXXFLAGS="${CXXFLAGS:-} -isysroot ${SDKROOT} -Wno-register"
 fi
 
 # `enable`
