@@ -2,7 +2,6 @@
 @echo off
 
 :: Activate Visual Studio compiler environment for pip subprocesses
-:: Must be done before setlocal to allow env vars to propagate
 if exist "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat" (
     call "%BUILD_PREFIX%\etc\conda\activate.d\vs2022_win-64_activate.bat"
 )

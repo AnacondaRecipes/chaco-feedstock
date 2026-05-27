@@ -24,10 +24,10 @@ build:
 outputs:
   - name: {{ name }}
     version: {{ version }}
-    script: build.sh   # [unix]
-    script: bld.bat    # [win]
     build:
       number: 0
+      script: {{ RECIPE_DIR }}/build_chaco.sh   # [unix]
+      script: {{ RECIPE_DIR }}/build_chaco.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
