@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Export SDK path and compiler flags for pip subprocesses (macOS)
-if [[ "$(uname)" == "Darwin" ]]; then
-    # Use configured sysroot if it exists, otherwise fall back to system SDK
-    if [[ -n "${CONDA_BUILD_SYSROOT:-}" && -d "${CONDA_BUILD_SYSROOT}" ]]; then
-        export SDKROOT="${CONDA_BUILD_SYSROOT}"
-    else
-        export SDKROOT="$(xcrun --show-sdk-path)"
-    fi
-    export CFLAGS="${CFLAGS:-} -isysroot ${SDKROOT}"
-    export CXXFLAGS="${CXXFLAGS:-} -isysroot ${SDKROOT} -Wno-register"
-fi
-
 # `enable`
 cd $SRC_DIR/enable
 
