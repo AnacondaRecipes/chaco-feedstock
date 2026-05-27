@@ -1,5 +1,7 @@
 # About chaco-feedstock
 
+Requires Python >=3.11, <3.14
+
 Feedstock license: [BSD-3-Clause](LICENSE)
 
 - Home: [https://docs.enthought.com/chaco/](https://docs.enthought.com/chaco)
