@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# # macOS-specific compiler flags
+# if [[ "$(uname)" == "Darwin" ]]; then
+#     # Suppress C++17 'register' warnings from bundled AGG/freetype code
+#     export CXXFLAGS="${CXXFLAGS:-} -Wno-register"
+#
+#     # Disable legacy Carbon/ATS APIs removed in macOS 15+ SDK
+#     macos_version=$(sw_vers -productVersion | cut -d. -f1)
+#     if [[ "$macos_version" -ge 15 ]]; then
+#         export CFLAGS="${CFLAGS:-} -DDARWIN_NO_CARBON -DFT_CONFIG_OPTION_SYSTEM_ZLIB -I${PREFIX}/include"
+#         export LDFLAGS="${LDFLAGS:-} -L${PREFIX}/lib -lz"
+#     fi
+# fi
+
 # `enable`
 cd $SRC_DIR/enable
 
