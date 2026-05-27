@@ -4,6 +4,9 @@
 :: set local variables in a new scope & ensure `cmd.exe` expands variable names at execution time
 setlocal enabledelayedexpansion
 
+:: Activate Visual Studio build tools
+for %%f in ("%BUILD_PREFIX%\etc\conda\activate.d\vs*_compiler_vars.bat") do call "%%f"
+
 :: `enable`
 cd "%SRC_DIR%\enable"
 if errorlevel 1 exit /b 1
