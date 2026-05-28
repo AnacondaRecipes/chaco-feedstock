@@ -4,16 +4,17 @@
 :: set local variables in a new scope & ensure `cmd.exe` expands variable names at execution time
 setlocal enabledelayedexpansion
 
-:: build `chaco`
+:: build `enable`
 :: --no-build-isolation tells `pip` to trust the `conda` environment's tools
-cd "%SRC_DIR%\chaco"
+:: [layout,svg] extras are required for chaco
+cd "%SRC_DIR%\enable"
 if errorlevel 1 exit /b 1
-"%PYTHON%" -m pip install . --no-build-isolation --no-deps --ignore-installed -v --prefix="%PREFIX%"
+"%PYTHON%" -m pip install ".[layout,svg]" --no-build-isolation --no-deps --ignore-installed -v --prefix="%PREFIX%"
 if errorlevel 1 exit /b 1
 
-:: verify `chaco`
-if not exist "%SP_DIR%\chaco\__init__.py" (
-    echo ERROR: chaco\__init__.py not found in %SP_DIR%
+:: verify `enable`
+if not exist "%SP_DIR%\enable\__init__.py" (
+    echo ERROR: enable\__init__.py not found in %SP_DIR%
     exit /b 1
 )
 
