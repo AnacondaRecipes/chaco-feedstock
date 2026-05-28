@@ -20,7 +20,7 @@ source:
 
 build:
   skip: true  # [py<311 or py>=314 or osx]
-  number: 0
+  number: 1
 
 outputs:
   - name: {{ enable_name }}
