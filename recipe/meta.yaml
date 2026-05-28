@@ -80,7 +80,7 @@ outputs:
         - numpy 2.4.4
         - pip
         - setuptools
-        - wheel
+        - wheel 0.46.3
       run:
         - python
         - {{ pin_subpackage(enable_name, exact=True) }}
