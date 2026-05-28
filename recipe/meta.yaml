@@ -4,7 +4,7 @@
 {% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ name }}-feedstock
+  name: {{ name }}
   version: {{ version }}
 
 source:
