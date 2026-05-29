@@ -4,7 +4,7 @@
 {% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ name }}-{{ enable_name }}
+  name: {{ name }}{{ enable_name }}
   version: {{ version }}
 
 source:
