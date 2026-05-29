@@ -1,11 +1,11 @@
-{% set name = "chaco" %}
-{% set version = "6.1.1" %}
+{% set chaco_name = "chaco" %}
+{% set chaco_version = "6.1.1" %}
 {% set enable_name = "enable" %}
 {% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ name }}-{{ enable_name }}
-  version: {{ version }}
+  name: {{ chaco_name }}-{{ enable_name }}
+  version: {{ chaco_version }}
 
 source:
   # `enable` is required for `chaco`
@@ -14,7 +14,7 @@ source:
     folder: enable
 
   # `chaco`
-  - url: https://github.com/enthought/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  - url: https://github.com/enthought/{{ chaco_name }}/archive/refs/tags/{{ chaco_version }}.tar.gz
     sha256: 45c88ba15e6cc1a453f54d0810eef71e409ccff161c3f9c861990e2589ef93aa
     folder: chaco
 
@@ -64,7 +64,8 @@ outputs:
       commands:
         - pip check
 
-  - name: {{ name }}
+  - name: {{ chaco_name }}
+    version: {{ chaco_version }}
     script: build_chaco.bat  # [win]
     script: build_chaco.sh   # [linux]
     requirements:
