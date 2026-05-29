@@ -1,0 +1,10 @@
+anaconda_config_version: 1
+upstream_sources:
+  - github:
+      identifier: enthought/enable
+      strip_prefix: v
+    packages: [enable]
+  - github:
+      identifier: enthought/chaco
+      strip_prefix: v
+    packages: [chaco]

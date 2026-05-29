@@ -4,7 +4,7 @@
 {% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ name }}
+  name: {{ name }}-enable
   version: {{ version }}
 
 source:
@@ -25,8 +25,7 @@ build:
 outputs:
   - name: {{ enable_name }}
     version: {{ enable_version }}
-    script: build_enable.bat  # [win]
-    script: build_enable.sh   # [linux]
+    script: build_enable
     requirements:
       build:
         - {{ compiler('c') }}
@@ -65,9 +64,7 @@ outputs:
         - pip check
 
   - name: {{ name }}
-    version: {{ version }}
-    script: build_chaco.bat  # [win]
-    script: build_chaco.sh   # [unix]
+    script: build_chaco
     requirements:
       build:
         - {{ compiler('c') }}
@@ -76,7 +73,7 @@ outputs:
       host:
         - python
         - cython
-        - {{ enable_name }} {{ enable_version }}
+        - {{ pin_subpackage(enable_name, exact=True) }}
         - numpy 2.4.4
         - pip
         - setuptools
