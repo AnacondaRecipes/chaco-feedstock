@@ -4,7 +4,7 @@
 {% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ chaco_name }}-{{ enable_name }}
+  name: {{ chaco_name }}{{ enable_name }}
   version: {{ chaco_version }}
 
 source:
