@@ -1,45 +1,84 @@
-{% set name = "<PLEASE ADD PKG NAME>" %}
-{% set version = "<PLEASE ADD PKG VERSION>" %}
+{% set chaco_name = "chaco" %}
+{% set chaco_version = "6.1.1" %}
+{% set enable_name = "enable" %}
+{% set enable_version = "6.1.0" %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: {{ chaco_name }}
+  version: {{ chaco_version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: <sha256>
+  # `enable` is required for `chaco` and is bundled into this package
+  - url: https://github.com/enthought/{{ enable_name }}/archive/refs/tags/{{ enable_version }}.tar.gz
+    sha256: 815724239c52acb4fa9bd3367b6f345b7c44626331a60cb8a226b170fa9d75cd
+    folder: enable
+
+  # `chaco`
+  - url: https://github.com/enthought/{{ chaco_name }}/archive/refs/tags/{{ chaco_version }}.tar.gz
+    sha256: 45c88ba15e6cc1a453f54d0810eef71e409ccff161c3f9c861990e2589ef93aa
+    folder: chaco
 
 build:
+  skip: true  # [py<311 or py>=314 or osx]
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<38]
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - swig
   host:
     - python
+    - cython
+    - fonttools 4.62.1
+    - numpy 2.4.4
     - pip
+    - pyparsing 3.2.5
+    - pyside6 6.11.0
+    - setuptools
+    - swig 4.4.1
+    - wheel 0.46.3
+    - zlib 1.3.1
   run:
     - python
+    - fonttools
+    - kiwisolver
+    - numpy
+    - pillow
+    - pyface
+    - pyparsing
+    - pyside6
+    - traits
+    - traitsui
 
 test:
-  imports:
-    - {{ name.replace('-', '.') }}
   requires:
     - pip
+  imports:
+    - chaco
+    - enable
   commands:
     - pip check
 
 about:
-  home: <PLEASE ADD HOME URL>
-  summary: <PLEASE ADD SUMMARY>
-  description: |
-    <PLEASE ADD DESCRIPTION>
-  license: <PLEASE ADD LICENSE>
-  license_family: <PLEASE ADD LICENSE_FAMILY>
-  license_file: <PLEASE_ADD_LICENSE_FILE>
-  dev_url: <PLEASE ADD DEV URL>
-  doc_url: <PLEASE ADD DOC URL>
+  home: https://github.com/enthought/chaco
+  summary: Chaco is a Python package for building interactive and custom 2-D plots and visualizations.
+  description: >
+    Chaco is a Python package for building interactive and custom 2-D plots and visualizations. Chaco facilitates
+    writing plotting applications at all levels of complexity, from simple scripts with hard-coded data to large
+    plotting programs with complex data interrelationships and a multitude of interactive tools. While Chaco generates
+    attractive static plots for publication and presentation, Chaco differs from tools like Matplotlib in that it also
+    works well for dynamic interactive data visualization and exploration. Chaco is part of the Enthought Tool Suite.
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  dev_url: https://github.com/enthought/chaco
+  doc_url: https://docs.enthought.com/chaco/
 
 extra:
+  anaconda-services:
+    ref:
+      - https://anaconda.zendesk.com/agent/tickets/119973
   recipe-maintainers:
-    - Jrice1317
+    - amaloney
